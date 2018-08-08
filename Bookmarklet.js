@@ -6,7 +6,8 @@ console.log(mailTitle);
 
 // Bookmarklet example thanks to: https://gist.github.com/stefanmaric/2abf96c740191cda3bc7a8b0fc905a7d
 // Copies the mail title to clipboard and pops an alert.
-// Doesn't work on Chrome 67.0.3396.99; it says "Uncaught ReferenceError: mailTitle is not defined".
+// Works fine on Chrome xx on Windows 10
+// Doesn't work on Chrome 67.0.3396.99 on macOS High Sierra; it says "Uncaught ReferenceError: mailTitle is not defined".
 
 javascript:!function(a){var b=document.createElement("textarea"),c=document.getSelection();b.textContent=a,document.body.appendChild(b),c.removeAllRanges(),b.select(),document.execCommand("copy"),c.removeAllRanges(),document.body.removeChild(b),var pageTitle = document.title,var cutStartPoint = pageTitle.indexOf("harry@socar.kr")-3,var mailTitle = pageTitle.substring(0, cutStartPoint)}(document.title),alert("메일 제목이 복사되었습니다.\n슬랙에서 /gmail (메일제목) 을 입력해보세요.");
 
