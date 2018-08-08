@@ -12,7 +12,8 @@ javascript:!function(a){var b=document.createElement("textarea"),c=document.getS
 
 
 // Another approach.
-// Works fine, but doesn't work when pressed twice.
+// Works fine, but doesn't work when pressed twice with error below:
+// Uncaught SyntaxError: Identifier 'copyListener' has already been declared
 
 var pageTitle = document.title;
 var cutStartPoint = pageTitle.indexOf("harry@socar.kr")-3;
