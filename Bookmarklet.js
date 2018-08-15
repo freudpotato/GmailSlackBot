@@ -20,10 +20,10 @@ var pageTitle = document.title;
 var cutStartPoint = pageTitle.indexOf("harry@socar.kr")-3;
 var mailTitle = pageTitle.substring(0, cutStartPoint);
 
-let copyListener = event => {
+var /*let*/ copyListener = event => {
 	document.removeEventListener("copy", copyListener, true);
 	event.preventDefault();
-	let clipboardData = event.clipboardData;
+	var /*let*/ clipboardData = event.clipboardData;
 	clipboardData.clearData();
 	clipboardData.setData("text/plain", mailTitle);
 	//clipboardData.setData("text/html", "<b>Hello, world!</b>");
@@ -32,4 +32,4 @@ document.addEventListener("copy", copyListener, true);
 document.execCommand("copy");
 
 // minified for bookmarklet
-javascript:var pageTitle=document.title;var cutStartPoint=pageTitle.indexOf("harry@socar.kr")-3;var mailTitle=pageTitle.substring(0,cutStartPoint);let copyListener=event=>{document.removeEventListener("copy",copyListener,!0);event.preventDefault();let clipboardData=event.clipboardData;clipboardData.clearData();clipboardData.setData("text/plain",mailTitle)};document.addEventListener("copy",copyListener,!0);document.execCommand("copy")
+javascript:var pageTitle=document.title;var cutStartPoint=pageTitle.indexOf("harry@socar.kr")-3;var mailTitle=pageTitle.substring(0,cutStartPoint);var copyListener=event=>{document.removeEventListener("copy",copyListener,!0);event.preventDefault();var clipboardData=event.clipboardData;clipboardData.clearData();clipboardData.setData("text/plain",mailTitle)};document.addEventListener("copy",copyListener,!0);document.execCommand("copy")
