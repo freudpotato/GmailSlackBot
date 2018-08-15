@@ -18,8 +18,8 @@ javascript:!function(a){var b=document.createElement("textarea"),c=document.getS
 // Fixed when changed let to var.
 
 var pageTitle = document.title;
-var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; 
-var cutStartPoint = pageTitle.indexOf(regExp)-3;
+//var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; 
+var cutStartPoint = pageTitle.indexOf("harry@socar.kr")-3;
 var mailTitle = "/gmail " + pageTitle.substring(0, cutStartPoint);
 
 var copyListener = event => {
