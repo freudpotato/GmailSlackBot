@@ -15,21 +15,23 @@ javascript:!function(a){var b=document.createElement("textarea"),c=document.getS
 // Another approach.
 // Works fine, but doesn't work when pressed twice with error below:
 // Uncaught SyntaxError: Identifier 'copyListener' has already been declared
+// Fixed when changed let to var.
 
 var pageTitle = document.title;
 var cutStartPoint = pageTitle.indexOf("harry@socar.kr")-3;
-var mailTitle = pageTitle.substring(0, cutStartPoint);
+var mailTitle = "/gmail " + pageTitle.substring(0, cutStartPoint);
 
-var /*let*/ copyListener = event => {
+var copyListener = event => {
 	document.removeEventListener("copy", copyListener, true);
 	event.preventDefault();
-	var /*let*/ clipboardData = event.clipboardData;
+	var clipboardData = event.clipboardData;
 	clipboardData.clearData();
 	clipboardData.setData("text/plain", mailTitle);
-	//clipboardData.setData("text/html", "<b>Hello, world!</b>");
 };
 document.addEventListener("copy", copyListener, true);
 document.execCommand("copy");
+alert("메일 제목이 복사되었습니다.\n슬랙에서 /gmail (메일제목) 을 입력해보세요.");
 
 // minified for bookmarklet
-javascript:var pageTitle=document.title;var cutStartPoint=pageTitle.indexOf("harry@socar.kr")-3;var mailTitle=pageTitle.substring(0,cutStartPoint);var copyListener=event=>{document.removeEventListener("copy",copyListener,!0);event.preventDefault();var clipboardData=event.clipboardData;clipboardData.clearData();clipboardData.setData("text/plain",mailTitle)};document.addEventListener("copy",copyListener,!0);document.execCommand("copy")
+javascript:var pageTitle=document.title;var cutStartPoint=pageTitle.indexOf("harry@socar.kr")-3;var mailTitle="/gmail " + pageTitle.substring(0,cutStartPoint);var copyListener=event=>{document.removeEventListener("copy",copyListener,!0);event.preventDefault();var clipboardData=event.clipboardData;clipboardData.clearData();clipboardData.setData("text/plain",mailTitle)};document.addEventListener("copy",copyListener,!0);document.execCommand("copy"),alert("메일 제목이 복사되었습니다.\n슬랙에서 /gmail (메일제목) 을 입력해보세요.");
+
