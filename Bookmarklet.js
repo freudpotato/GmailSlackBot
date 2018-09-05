@@ -36,3 +36,23 @@ alert("메일 제목이 복사되었습니다.\n슬랙에서 /gmail (메일제�
 // minified for bookmarklet
 javascript:var pageTitle=document.title;var cutStartPoint=pageTitle.indexOf("harry@socar.kr")-3;var mailTitle="/gmail " + pageTitle.substring(0,cutStartPoint);var copyListener=event=>{document.removeEventListener("copy",copyListener,!0);event.preventDefault();var clipboardData=event.clipboardData;clipboardData.clearData();clipboardData.setData("text/plain",mailTitle)};document.addEventListener("copy",copyListener,!0);document.execCommand("copy"),alert("메일 제목이 복사되었습니다.\n슬랙에서 /gmail (메일제목) 을 입력해보세요.");
 
+
+// gets HTML Hyperlink to Gmail search results.
+var pageTitle = document.title;
+//var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; 
+var cutStartPoint = pageTitle.indexOf("harry@socar.kr")-3;
+var mailLink = "<a href='https://mail.google.com/mail/u/0/#search/" + pageTitle.substring(0, cutStartPoint) + "'>" + pageTitle.substring(0, cutStartPoint) + "</a>";
+
+var copyListener = event => {
+	document.removeEventListener("copy", copyListener, true);
+	event.preventDefault();
+	var clipboardData = event.clipboardData;
+	clipboardData.clearData();
+	clipboardData.setData("text/html", mailLink);
+};
+document.addEventListener("copy", copyListener, true);
+document.execCommand("copy");
+alert("메일 링크가 복사되었습니다.");
+
+// minified for bookmarklet
+javascript:var pageTitle=document.title;var cutStartPoint=pageTitle.indexOf("harry@socar.kr")-3;var mailLink="<a href='https://mail.google.com/mail/u/0/#search/"+pageTitle.substring(0,cutStartPoint)+"'>"+pageTitle.substring(0,cutStartPoint)+"</a>";var copyListener=event=>{document.removeEventListener("copy",copyListener,!0);event.preventDefault();var clipboardData=event.clipboardData;clipboardData.clearData();clipboardData.setData("text/html",mailLink)};document.addEventListener("copy",copyListener,!0);document.execCommand("copy");
